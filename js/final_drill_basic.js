@@ -2,14 +2,14 @@
 function getReceipt() {
 	// This initializes our string so it can get passed from  
 	// function to function, growing line by line into a full receipt
-	var text1 = "<h3>You Ordered:</h3>";
+	var text1 = "\xa0\xa0\xa0\xa0\xa0 You Ordered ---> \xa0\xa0\xa0\xa0";
 	var runningTotal = 0;
 	var sizeTotal = 0;
 	var sizeArray = document.getElementsByClassName("size");
 	for (var i = 0; i < sizeArray.length; i++) {
 		if (sizeArray[i].checked) {
 			var selectedSize = sizeArray[i].value;
-			text1 = text1+selectedSize+"<br>";
+			text1 = text1+selectedSize+"\xa0\xa0\xa0";
 		}
 	}
 	if (selectedSize === "Personal Pizza") {
@@ -22,10 +22,6 @@ function getReceipt() {
 		sizeTotal = 16;
 	}
 	runningTotal = sizeTotal;
-	console.log(selectedSize+" = $"+sizeTotal+".00");
-	console.log("size text1: "+text1);
-	console.log("subtotal: $"+runningTotal+".00");
-	
 	getMeat(runningTotal,text1); 
 };	
 
@@ -37,7 +33,7 @@ function getMeat(runningTotal,text1) {
 		if (meatArray[j].checked) {
 			selectedMeat.push(meatArray[j].value);
 			console.log("selected meat item: ("+meatArray[j].value+")");
-			text1 = text1+meatArray[j].value+"<br>";
+			text1 = text1+meatArray[j].value+"\xa0\xa0\xa0";
 		}
 	}
 	var meatCount = selectedMeat.length;
@@ -47,12 +43,6 @@ function getMeat(runningTotal,text1) {
 		meatTotal = 0;
 	}
 	runningTotal = (runningTotal + meatTotal);
-	console.log("total selected meat items: "+meatCount);
-	console.log(meatCount+" meat - 1 free meat = "+"$"+meatTotal+".00");
-	console.log("meat text1: "+text1);
-	console.log("Purchase Total: "+"$"+runningTotal+".00");
-	document.getElementById("showText").innerHTML=text1;
-	document.getElementById("totalPrice").innerHTML = "<h3>Total: <strong>$"+runningTotal+".00"+"</strong></h3>";
 	getVeggie(runningTotal,text1); 
 };
 
@@ -63,8 +53,7 @@ function getVeggie(runningTotal,text1) {
 	for (var j = 0; j < veggieArray.length; j++) {
 		if (veggieArray[j].checked) {
 			selectedVeggie.push(veggieArray[j].value);
-			console.log("selected veggie item: ("+veggieArray[j].value+")");
-			text1 = text1+veggieArray[j].value+"<br>";
+			text1 = text1+veggieArray[j].value+"\xa0\xa0\xa0";
 		}
 	}
 	var veggieCount = selectedVeggie.length;
@@ -74,12 +63,6 @@ function getVeggie(runningTotal,text1) {
 		veggieTotal = 0;
 	}
 	runningTotal = (runningTotal + veggieTotal);
-	console.log("total selected veggie items: "+veggieCount);
-	console.log(veggieCount+" veggie - 1 free veggie = "+"$"+veggieTotal+".00");
-	console.log("veggie text1: "+text1);
-	console.log("Purchase Total: "+"$"+runningTotal+".00");
-	document.getElementById("showText").innerHTML=text1;
-	document.getElementById("totalPrice").innerHTML = "<h3>Total: <strong>$"+runningTotal+".00"+"</strong></h3>";
 	getCheese(runningTotal,text1);
 };
 	
@@ -89,16 +72,13 @@ function getCheese(runningTotal,text1) {
 	for (var i = 0; i < cheeseArray.length; i++) {
 		if (cheeseArray[i].checked) {
 			var selectedCheese = cheeseArray[i].value;
-			text1 = text1+selectedCheese+"<br>";
+			text1 = text1+selectedCheese+"\xa0\xa0\xa0";
 		}
 	}
 	if (selectedCheese === "Extra Cheese") {
 		cheeseTotal = 3;
 	}
 	runningTotal = (cheeseTotal+runningTotal);
-	document.getElementById("showText").innerHTML=text1;
-	document.getElementById("totalPrice").innerHTML = "<h3>Total: <strong>$"+runningTotal+".00"+"</strong></h3>";
-
 	getCrust(runningTotal,text1); 
 };
 
@@ -108,17 +88,13 @@ function getCrust(runningTotal,text1) {
 	for (var i = 0; i < crustArray.length; i++) {
 		if (crustArray[i].checked) {
 			var selectedCrust = crustArray[i].value;
-			text1 = text1+selectedCrust+"<br>";
+			text1 = text1+selectedCrust+"\xa0\xa0\xa0";
 		}
 	}
 	if (selectedCrust === "Cheese Stuffed Crust") {
 		crustTotal = 3;
 	}
 	runningTotal = (crustTotal+runningTotal);
-	document.getElementById("showText").innerHTML=text1;
-	document.getElementById("totalPrice").innerHTML = "<h3>Total: <strong>$"+runningTotal+".00"+"</strong></h3>";
-
-	
 	getSauce(runningTotal,text1);
 };
 
@@ -128,10 +104,10 @@ function getSauce(runningTotal,text1) {
 	for (var i = 0; i < sauceArray.length; i++) {
 		if (sauceArray[i].checked) {
 			var selectedSauce = sauceArray[i].value;
-			text1 = text1+selectedSauce+"<br>";
+			text1 = text1+selectedSauce+"\xa0\xa0\xa0";
 		}
 	}
 	document.getElementById("showText").innerHTML=text1;
-	document.getElementById("totalPrice").innerHTML = "<h3>Total: <strong>$"+runningTotal+".00"+"</strong></h3>";
+	document.getElementById("totalPrice").innerHTML = "\xa0\xa0\xa0\xa0\xa0\xa0<strong>$"+"\xa0"+runningTotal+".00"+"</strong></font></h5>";
 
 };
